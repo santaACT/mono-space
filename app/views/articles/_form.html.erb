@@ -1,0 +1,18 @@
+<div class="button_list">
+  <button type="button" class="button active" value="youtube">
+    <p>YouTube</p>
+  </button>
+  <button type="button" class="button" value="image">
+    <p>ImageFile</p>
+  </button>
+  <button type="button" class="button" value="image_url">
+    <p>ImageUrl</p>
+  </button>
+</div>
+
+<%= form.text_field :youtube_url, placeholder: "YouTube Url", class: "form-none show"%>
+<%= form.file_field :img, placeholder: "画像ファイル", class: "form-none"%>
+<%= form.hidden_field :img_cache %>
+<%= form.text_field :image, placeholder: "Image Url", class: "form-none" %>
+<%= form.text_field :text,:size=>"60", placeholder: "text" , rows: "10" %>
+<%= form.submit "SEND", class: "submit"%>

@@ -1,0 +1,30 @@
+@import "colors";
+
+.search-form  {
+  height: 50px;
+  width: 630px;
+  margin: 20px 0 auto;
+  text-align: center;
+  .search-input {
+    height: 30px;
+    width: 40%;
+    border-radius: 8px;
+    text-align: center;
+  }
+  .search-btn {
+    font-size: 14px;
+    border: 2px solid $accent;
+    color: $accent;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 8px;
+    display: inline-block;
+    background-color: $white;
+    padding: 5px 8px;
+    vertical-align: bottom;
+    &:hover {
+      border-color: lighten($accent, 15%);
+      color: lighten($accent, 15%);
+    }
+  }
+}

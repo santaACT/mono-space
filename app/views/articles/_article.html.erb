@@ -1,0 +1,39 @@
+<div class="article" data-article-id = "<%= article.id %>">
+  <div class="content_post" >
+  <% if article.youtube_url? %>
+    <iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" frameborder="0" height="315" src="https://www.youtube.com/embed/<%= article.youtube_url[32..42] %>" width="560"></iframe>
+  <%else%>
+    <%if article.image? %>
+      <div class="content_back" style="background-image: url(<%= article.image %>);">
+    <%else%>
+      <% if article.img? %>
+        <%= image_tag article.img.url, class: "img_content" %>
+      <%else%>
+        <%= image_tag 'no_image.jpg', class:"img_content"%>
+      <% end %>
+    <% end %>
+  <% end %>
+    <div class="more">
+      <span><%= image_tag 'arrow_top.png' %></span>
+      <ul class="more_list">
+        <li>
+          <%= link_to '詳細', "/articles/#{article.id}", method: :get %>
+        </li>
+        <% if user_signed_in? && current_user.id == article.user_id %>
+          <li>
+            <%= link_to '編集', "/articles/#{article.id}/edit", method: :get %>
+          </li>
+          <li>
+            <%= link_to '削除', "/articles/#{article.id}", method: :delete %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+    <%= simple_format(article.text) %>
+    <span class="name">
+      <a href="/users/<%= article.user.id %>">
+        <span>投稿者</span><%= article.user.nickname %>
+      </a>
+    </span>
+  </div>
+</div>

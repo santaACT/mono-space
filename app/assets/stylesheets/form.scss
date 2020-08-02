@@ -1,0 +1,73 @@
+@import "colors";
+
+form {
+  height: 500px;
+  width: 700px;
+  h3 {
+    font-size: 24px;
+    font-weight: bold;
+    border-bottom: solid 3px #f5f5f3;
+    text-align: center;
+  }
+  .button_list {
+    text-align: center;
+    margin: 30px auto;
+    .button {
+      width: 90px;
+      height: 30px;
+      margin: 0 10px;
+      background-color: #ffffff;
+      border: solid 2px gray;
+      border-radius: 6px;
+    }
+  }
+  #article_youtube_url {
+    height: 28px;
+    width: 400px;
+    margin: 20px auto;
+  }
+  #article_img {
+    height: 28px;
+    width: 400px;
+    margin: 20px auto;
+  }
+  #article_image {
+    height: 28px;
+    width: 400px;
+    margin: 20px auto;
+  }
+  #article_text {
+    display: block;
+    width: 500px;
+    font-size: 20px;
+    padding: 4px;
+    margin: 20px auto;
+  }
+  .submit {
+    font-size: 14px;
+    border: 2px solid $accent;
+    color: $white;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 8px;
+    display: block;
+    background-color: $accent;
+    padding: 6px 200px;
+    margin: 0 auto;
+    &:hover {
+      background-color: lighten( $accent, 15% );
+      border:2px solid lighten( $accent, 15% );
+        }
+  }
+
+  .form-none {
+    display: none;
+  }
+  .show {
+    display: block;
+  }
+  .form-block {
+    display: block;
+  }
+}
+

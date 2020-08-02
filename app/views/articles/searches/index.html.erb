@@ -1,0 +1,14 @@
+<div class="box">
+  <%= form_with(url: articles_searches_path, local: true, method: :get, class: "search-form") do |form| %>
+    <%= form.text_field :keyword, placeholder: "投稿を検索する", class: "search-input" %>
+    <%= form.submit "search", class: "search-btn" %>
+  <% end %>
+  <div class="contents high">
+</div>
+</div>
+<div class="contents row">
+  <% @articles.each do |article| %>
+    <%= render partial: "articles/article", locals: { article: article } %>
+  <% end %>
+</div>
+<%= paginate @articles %>
