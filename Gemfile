@@ -77,3 +77,4 @@ gem 'kaminari'
 gem 'carrierwave', '~> 1.3', '>= 1.3.1'
 gem "jquery-rails"
 gem 'rails_same_site_cookie'
+gem 'fog-aws'
