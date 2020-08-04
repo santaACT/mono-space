@@ -4,7 +4,8 @@ lock '3.14.1'
 
 # Capistranoのログの表示に利用する
 set :application, 'mono-space'
-
+# set :linked_files, fetch(:linked_files, []).push("config/master.key")
+set :linked_files, %w{config/master.key}
 # どのリポジトリからアプリをpullするかを指定する
 set :repo_url,  'git@github.com:santaACT/mono-space.git'
 
@@ -29,7 +30,33 @@ set :keep_releases, 5
 # デプロイ処理が終わった後、Unicornを再起動するための記述
 after 'deploy:publishing', 'deploy:restart'
 namespace :deploy do
-  task :restart do
-    invoke 'unicorn:restart'
-  end
+
+ task :restart do
+   invoke 'unicorn:restart'
+ end
+# restartだとキャッシュが残るので下記の書き方でも良い
+# task :restart do
+#   invoke 'unicorn:stop'
+#   invoke 'unicorn:start'
+# end
+
+ desc 'upload master.key'
+ task :upload do
+   on roles(:app) do |host|
+     if test "[ ! -d #{shared_path}/config ]"
+       execute "mkdir -p #{shared_path}/config"
+     end
+     upload!('config/master.key', "#{shared_path}/config/master.key")
+   end
+ end
+ before :starting, 'deploy:upload'
+ after :finishing, 'deploy:cleanup'
 end
+
+# 自動デプロイ
+set :default_env, {
+  rbenv_root: "/usr/local/rbenv",
+  path: "/usr/local/rbenv/shims:/usr/local/rbenv/bin:$PATH",
+  AWS_ACCESS_KEY_ID: ENV["AWS_ACCESS_KEY_ID"],
+  AWS_SECRET_ACCESS_KEY: ENV["AWS_SECRET_ACCESS_KEY"]
+}
