@@ -1,24 +1,15 @@
-# README
+# アプリ名 mono-space
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# 説明
+ 画像file投稿　URLを使った画像投稿　YouTubeのURLを使った動画投稿
 
-Things you may want to cover:
+# 使い方
+右上の新規登録、ログインからセッションを開始後、右上に投稿するボタンが表示される<br>
+投稿画面ではYouTube、imagefile、imageURLから１つ選択してもらいどれか１つのみ投稿できる<by>
+textの入力は必須です。入力が無い場合は投稿できません。
 
-* Ruby version
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# 構築やインストール方法
+ruby 2.6.3<br>
+rails 5.2.3<br>
+mySQL 
