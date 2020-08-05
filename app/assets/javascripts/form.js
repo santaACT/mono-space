@@ -1,5 +1,4 @@
-$(document).on('turbolinks:load', function() {
-
+$(function (){
   window.addEventListener("load", function() {
     let tabs = document.getElementsByClassName("button");
     tabsAry = Array.prototype.slice.call(tabs);
